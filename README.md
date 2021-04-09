@@ -1,5 +1,5 @@
 
-An Immunization Tracking System for Pediatrics made with Django app
+# An Immunization Tracking System for Pediatrics made with Django app
 
 
 
@@ -24,7 +24,7 @@ An Immunization Tracking System for Pediatrics made with Django app
 
 ```sh
 
-$ git clone 
+$ git clone https://github.com/Onlynfk/trackimmunize
 
 $ pipenv shell
 
