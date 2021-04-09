@@ -4,7 +4,7 @@ An Immunization Tracking System for Pediatrics made with Django app
 
 
 # Features
-- fullly functional dashboard for admin,health workeer and public health worker
+- fullly functional dashboard for admin,health worker and public health official
 - user authentication
 - map integration 
 - more .. etc
@@ -38,6 +38,8 @@ $ python manage.py makemigrations
 $ python manage.py migrate
 
 
-![alt text](https://github.com/Onlynfk/trackimmunize/health.svg?raw=true)
+![alt text](https://github.com/Onlynfk/trackimmunize/blob/main/app%20image.png?raw=true)
+![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+
 
 
