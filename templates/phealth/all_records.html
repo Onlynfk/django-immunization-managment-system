@@ -1,0 +1,91 @@
+{% extends "base.html" %} {% block content %}
+<!-- Page Heading -->
+<div class="jumbotron jumbotron-fluid bg-primary">
+    <div class="container align-items-center">
+        <h1 class="display-6 text-white">All Health Centre Records</h1>
+        <p class="lead text-white">Total Number of Records ({{total_rc}})</p>
+        <hr class="my-2">
+
+        <p class="text-black-50 text-white">
+            More info
+        </p>
+    </div>
+</div>
+<!-- Content Row -->
+<div class="row">
+    <div class="col-xl-12 col-lg-12">
+        <div class=" bg-white text-white p-4 rounded ">
+            <div class="col-auto">
+            </div>
+            <!-- Records (Monthly) Card Example -->
+
+            {% for record in records %}
+            <div class="card  shadow h-60 mt-4 py-2 bg-white">
+                <div class="card-body ">
+                    <div class="row no-gutters align-items-center">
+
+                        <div class="col mr-2">
+
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Created {{ record.created|date:"F d, Y" }} </div>
+                            <div class="text-xl-left mb-0 font-weight-bold text-gray-800">{{ record.first_name }} {{ record.last_name }}</div>
+                        </div>
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Completed Schedules </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800 ">{{ record.schedules.count }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <a href="{% url 'record-detail' record.id %}"><i class="fas fa-arrow-right fa-1x text-primary text-300"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <nav>
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a href="#" class="page-link py-2 px-3">
+                        <span>&laquo</span>
+                    </a>
+
+                </li>
+                <li class="page-item active">
+                    <a href="#" class="page-link py-2 px-3">
+                        <span>1</span>
+                    </a>
+
+                </li>
+                <li class="page-item">
+                    <a href="#" class="page-link py-2 px-3">
+                        <span>2</span>
+                    </a>
+
+                </li>
+                <li class="page-item">
+                    <a href="#" class="page-link py-2 px-3">
+                        <span>3</span>
+                    </a>
+
+                </li>
+                <li class="page-item">
+                    <a href="#" class="page-link py-2 px-3">
+                        <span>4</span>
+                    </a>
+
+                </li>
+
+
+                <li class="page-item">
+                    <a href="#" class="page-link py-2 px-3">
+                        <span>&raquo</span>
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </nav>
+    </div>
+</div>
+
+{% endblock content %}

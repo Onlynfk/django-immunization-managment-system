@@ -1,0 +1,97 @@
+{% extends "base.html" %} {% block content %}
+
+
+<div class="jumbotron jumbotron-fluid bg-primary">
+    <div class="container align-items-center">
+        <h1 class="display-6 text-white">{{ user.centreprofile.health_centre_in }} Updates</h1>
+        <p class="lead text-white">Total Number of Records( {{total_rc}})</p>
+        <hr class="my-2">
+        <p class="text-white">More info</p>
+        <p class="lead">
+        </p>
+    </div>
+</div>
+<!-- Content Row -->
+<div class="row">
+    <div class="col-xl-12 col-lg-12">
+        <div class=" bg-white text-white p-4 rounded ">
+            <div class="col-auto">
+
+            </div>
+            <!-- Records (Monthly) Card Example -->
+
+            {% for record in records %}
+            <div class="card shadow h-100 py-1 mb-1 bg-white">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <a href="#" class="text-info" style="text-decoration: none;">
+                            <i class="fas fa-user-circle fa-1x text-info text-300 mr-3"></i>
+                        </a>
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Created by {{record.creator}}</div>
+                            <div class="text-xl-left mb-0 font-weight-bolder text-gray-800">{{record.first_name}} Andrew</div>
+                        </div>
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Vaccination Schedules </div>
+                            <div class="text-black-50 mb-0 font-weight-bold ">5</div>
+                        </div>
+                        <div class="col-auto">
+                            <a href="{% url 'record-detail' record.id %}"><i class="fas fa-arrow-right fa-1x text-primary text-300"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            {% empty %}
+            <h3 class="btn btn-lg btn-secondary disabled">No Records yet 👌: Add one</h3>
+            {% endfor %}
+        </div>
+        <!-- <nav>
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a href="#" class="page-link py-2 px-3">
+                        <span>&laquo</span>
+                    </a>
+
+                </li>
+                <li class="page-item active">
+                    <a href="#" class="page-link py-2 px-3">
+                        <span>1</span>
+                    </a>
+
+                </li>
+                <li class="page-item">
+                    <a href="#" class="page-link py-2 px-3">
+                        <span>2</span>
+                    </a>
+
+                </li>
+                <li class="page-item">
+                    <a href="#" class="page-link py-2 px-3">
+                        <span>3</span>
+                    </a>
+
+                </li>
+                <li class="page-item">
+                    <a href="#" class="page-link py-2 px-3">
+                        <span>4</span>
+                    </a>
+
+                </li>
+
+
+                <li class="page-item">
+                    <a href="#" class="page-link py-2 px-3">
+                        <span>&raquo</span>
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </nav> -->
+    </div>
+</div>
+
+{% endblock content %}

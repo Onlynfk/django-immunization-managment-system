@@ -1,0 +1,85 @@
+{% extends 'base.html' %} {% block content %} {% load widget_tweaks %} {% load crispy_forms_tags %}
+{% if form.non_field_errors %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.non_field_errors %}
+    <p class="mb-0"> {% if forloop.last %} {% endif %}{{ error }}</p>
+    {% endfor %}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endif %}
+<!-- add record -->
+<!-- Default form register -->
+
+<form class=" ml-5 text-left shadow-lg border-4 border-secondary p-5" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p class="h4 mb-4">Create Record</p>
+
+    <div class="form-row mb-4">
+        <div class="col-6">
+
+            <!-- First name -->
+            {% render_field form.first_name class="form-control" placeholder="First name"%}
+        </div>
+        <div class="col-6">
+            <!-- Last name -->
+            {% render_field form.last_name class="form-control" placeholder="Last name"%}
+        </div>
+
+    </div>
+    <div class="form-row mb-4">
+        <div class="col-6">
+            {% render_field form.birth_date class="form-control" placeholder="User name"%}
+
+
+        </div>
+        <div class="col-6">
+            {% render_field form.gender class="form-control" placeholder="Gender"%}
+
+
+        </div>
+    </div>
+    <div class="form row">
+
+        <div class="col-12">
+
+            {% render_field form.home_address class="form-control mb-3" placeholder="Home address"%}
+
+        </div>
+        <!-- health centre -->
+
+    </div>
+    <div class="form row">
+      <div class="col-6">
+
+            {% render_field form.parent_name class="form-control mb-3" placeholder="guardian name"%}
+
+        </div>
+        <div class="col-6">
+            {% render_field form.parent_mobile class="form-control mb-3" placeholder="guardian mobile"%}
+        </div>
+
+
+    </div>
+    <div class="form row">
+       
+        <div class="col-6">
+
+            {% render_field form.weight class="form-control mb-3" placeholder="weight"%}
+
+        </div>
+        <div class="col-6">
+            {% render_field form.height class="form-control mb-3" placeholder="height"%}
+        </div>
+    </div>
+    
+    <!-- Sign up button -->
+    <button class="btn btn-primary my-4 btn-block" type="submit">Create Record</button>
+
+
+
+</form>
+<!-- Default form register -->
+
+<!-- /.container-fluid -->{% endblock content %}

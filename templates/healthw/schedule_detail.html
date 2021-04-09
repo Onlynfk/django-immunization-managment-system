@@ -1,0 +1,62 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="text-left">
+    <div class="card">
+        <div class="card-header">
+            <a href="{{schedule.record.get_absolute_url}}">
+                <i class="fas fa-arrow-circle-left text-dark"></i>
+            </a> {{schedule.record.first_name}} {{schedule.record.last_name}} schedule details
+        </div>
+        <div class="card-body">
+            <h5 class="card-title"> <i class="fas fa-pills text-primary"></i> <small> Vaccine given: {{schedule.vaccine_type}}</small></h5>
+            <h5 class="card-title"> <i class="fas fa-calendar text-primary"></i> <small>Date given: {{schedule.date_immunized}}</small></h5>
+            <h5 class="card-title"> <i class="fas fa-home text-primary"></i> <small>At: {{schedule.centre}}</small></h5>
+            <h5 class="card-title"> <i class="fas fa-calendar text-primary"></i> <small> Next Scheduled date: {{schedule.exp_date}}</small></h5>
+            <h5 class="card-title"> <i class="fas fa-pills text-primary"></i> <small>Site given: {{schedule.site_given}}</small></h5>
+
+
+            <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+            <a href="{{schedule.get_update_url }}" class="btn btn-sm btn-outline-primary mt-3">Update</a>
+            <a href="{{schedule.get_delete_url}}" class="btn btn-sm btn-outline-danger mt-3">Delete</a>
+
+        </div>
+    </div>
+</div>
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId">
+  Delete
+</button> -->
+
+<!-- Modal -->
+<!-- <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Remove Schedule</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                </div>
+                <div class="modal-body">
+                    <h4>Are you sure you want to delete "{{ schedule.record.first_name }} {{schedule.record.last_name}}" schedule </h4>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button class="btn btn-outline-danger" type="submit">Yes, Delete</button>
+                </div>
+        </form>
+        </div>
+    </div>
+
+    <script>
+        $('#exampleModal').on('show.bs.modal', event => {
+            var button = $(event.relatedTarget);
+            var modal = $(this);
+            // Use above variables to manipulate the DOM
+
+        });
+    </script> -->
+{% endblock content %}

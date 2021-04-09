@@ -1,0 +1,43 @@
+{% extends "base.html" %} {% block content %}
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Current Map data overview</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Health Centre</th>
+                        <th>Number of Staffs</th>
+                        <th>Number of Records</th>
+                        <th>Number of Schedules</th>
+                        <th>State</th>
+                        <th>LGA</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for hc in hcs %}
+                    <tr>
+                        <td>{{hc.id}}</td>
+                        <td>{{hc.name}}</td>
+                        <td> {{hc.centre.count}}</td>
+                        <td>{{hc.rec_centres.count}}</td>
+                        <td>{{hc.sch_centres.count}}</td>
+                        <td>{{hc.local}}</td>
+                        <td>{{hc.state}}</td>
+                    </tr>
+
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <!-- <p> Simply </p> -->
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>{% endblock content %}

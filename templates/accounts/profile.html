@@ -1,0 +1,13 @@
+{% extends 'base.html' %} {% block content %}
+<div class="text-center">
+    <p class="fa-w-2 fa-9x "> <i class="fas fa-user-circle text-primary "></i>
+    </p>
+    <h3 class="h1 fw-bold">{{user.first_name}} {{user.last_name}} {{user.username}}</h3>
+    {% if user.is_hw%}
+    <h3>Works at {{user.centreprofile.health_centre_in}}</h3>
+    {%endif%}
+    <a href="{% url 'password_change' %}" class="btn btn-lg btn-secondary mt-3"> Change Password</a>
+</div>
+
+
+{% endblock content %}

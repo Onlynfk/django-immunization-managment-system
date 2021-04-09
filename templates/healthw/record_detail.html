@@ -1,0 +1,111 @@
+{% extends "base.html" %} {% load crispy_forms_tags %} {% block content %}
+<!-- Page Heading -->
+<div class="jumbotron bg-primary text-white">
+    <h1 class="display-6">{{record.first_name}} {{record.last_name}}</h1>
+    <p class="mb-2 "> Created on {{record.created|date}} by {{record.creator}}</p>
+    <p class="mb-2 "> Birth Date: {{record.birth_date}}</p>
+    <p class="mb-2 ">Weight :{{record.weight}}kg || Height:{{record.height}}ft</p>
+
+    <span><a  class="btn btn-sm btn-secondary" href="{% url 'record-update' record.id %}" > Update</a>
+
+</div>
+
+<!-- Content Row -->
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-10"> 
+        <div class=" bg-white text-white p-4 rounded ">
+            <div class="d-sm-flex align-items-center justify-content-between ">
+                <h5 class="h5 mb-0 text-gray-800">
+
+                </h5>
+
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#schedId">
+            <i class="fas fa-plus-circle mr-2 "></i>Add Schedule
+        </button>
+            </div>
+            <!-- Records (Monthly) Card Example -->
+            {% for schedule in schedules %}
+            <div class="card shadow h-100  mt-4 py-1 bg-white">
+                <div class="card-body ">
+                    <div class="row no-gutters align-items-center">
+                        <a href="#" class="text-info" style="text-decoration: none;">
+                            <i class="fas fa-user-circle fa-1x text-info text-300 mr-3"></i>
+                        </a>
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bolder text-primary text-uppercase mb-1">vaccine given </div>
+                            <div class="text-black-60 mb-0 font-weight-bold text-gray-800">{{schedule.vaccine_type}} </div>
+                        </div>
+
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bolder text-primary text-uppercase mb-1">date given </div>
+                            <div class="text-black-50 mb-0 font-weight-bold text-gray-800 ">{{schedule.date_immunized|date}}</div>
+
+                        </div>
+                        
+                        <div class="col-auto">
+                           
+                            <a href="{% url 'schedule-detail' schedule.id %}" >
+                                <i class="fas fa-arrow-right    "></i>
+                            </a>
+
+
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            {% empty %}
+                <h3 class="btn btn-lg btn-secondary disabled">No Sessions yet 👌: Add one</h3>
+            {% endfor %}
+        </div>
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="schedId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    {% if new_schedule %}
+    <div class="alert alert-success" role="alert">
+        Your schedule is awaiting moderation
+    </div>
+    {% else %}
+    <h3 class="text-50" id="schedule">Add a Schedule</h3>
+    <form method="post" style="margin-top: 1.3em;">
+        {{ schedule_form|crispy }} {% csrf_token %}
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+    {% endif %} </div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="container mt-3 mb-5">
+    <div class="d-sm-flex align-items-center justify-content-between mt-3 mb-5">
+        <h5 class="h5 mb-0 text-gray-800">
+
+        </h5>
+
+        <a href="{% url 'record-delete' record.id%}" class="btn btn-danger btn-sm text-50 mt-5"> <i class="fas fa-trash "></i></a>
+
+    </div>
+</div>
+
+
+{% endblock content %}

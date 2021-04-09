@@ -1,0 +1,13 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block content %}
+<div class="container">
+    <form method="POST" action="{{schedule.get_update_url }}">
+        {% csrf_token %} {{form|crispy}}
+
+        <div class="form-group">
+            <button class="btn btn-outline-success mr-2" type="submit">Update</button>
+            <a class="btn btn-outline-secondary" href="{{schedule.get_absolute_url }}">Cancel</a>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

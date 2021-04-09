@@ -1,0 +1,208 @@
+{% extends 'base.html' %} {% block content %}
+<!-- Begin Page Content -->
+<div class="container-fluid mt-5">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-1 mb-5">
+        <h1 class="h3 mb-0 text-gray-800">Hello, {{user.username}}
+
+        </h1>
+
+    </div>
+
+
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Records (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card bg-primary shadow h-100 py-2">
+                <div class="card-body bg-primary">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Total number of Records</div>
+                            <div class="h5 mb-0 font-weight-bold text-white">{{ur_records}}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-file fa-2x text-white -300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card bg-primary shadow h-100 py-2">
+                <div class="card-body bg-primary">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-white text-uppercase mb-1">All Schedules</div>
+                            <div class="h5 mb-0 font-weight-bold text-white">{{ur_schedules}}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-file fa-2x text-white -300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card bg-primary shadow h-100 py-2">
+                <div class="card-body bg-primary">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-white text-uppercase mb-1">All Centre Records</div>
+                            <div class="h5 mb-0 font-weight-bold text-white">{{total_rc}}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-file fa-2x text-white -300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card bg-primary shadow h-100 py-2">
+                <div class="card-body bg-primary">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-white text-uppercase mb-1">Upcoming schedules</div>
+                            <div class="h5 mb-0 font-weight-bold text-white">{{ur_schedules }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-file fa-2x text-white -300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Content Row -->
+
+    <div class="row">
+        <!-- record view -->
+        <div class="col-xl-6 col-12">
+            <div class=" bg-white text-white p-4">
+                <h6 class="m-0 font-weight-bold text-primary ml-3 mb-2 ">Your Recent Records</h6>
+
+                <!-- Records (Monthly) Card Example -->
+                {% for record in records %}
+                <div class="card bg-white ">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Created {{record.created|date}}</div>
+                                <div class="h6 mb-0 font-weight-bold text-dark">{{record.first_name }} {{record.last_name}}</div>
+                            </div>
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Vaccination Schedules </div>
+                                <div class="h6 mb-0 font-weight-bold text-dark">{{record.schedules.count}}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-arrow-right fa-1x text-primary text-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <!-- schedule view -->
+        <div class="col-xl-6 col-12">
+            <div class=" bg-light text-white p-4 rounded ">
+                <h6 class="m-0 font-weight-bold text-primary ml-3 mb-2">Upcoming Schedules</h6>
+                <!-- Records (Monthly) Card Example -->
+                <div class="card  shadow h-100 py-1 bg-light">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Child Nmae </div>
+                                <div class="h6 mb-0 font-weight-bold text-secondary">Gift Andrew</div>
+                            </div>
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-liht text-success text-uppercase mb-1">Date </div>
+                                <div class="h6 mb-0 font-weight-bold text-secondary">5-12-2021</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-arrow-right fa-1x text-primary text-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- Content Row -->
+    <div class="row">
+
+        <!-- Content Column -->
+        <div class="col-lg-8 mb-4">
+
+            <!-- Project Card Example -->
+            <div>
+                <h6 class="m-0 font-weight-bold text-primary mt-3 ml-3 p-2 ">Your Centre updates</h6>
+            </div>
+
+            <div class="container-fluid ">
+                <div class="row py-3 mb-4">
+                    <table class="table text-secondary ">
+                        <thead>
+                            <tr>
+                                <th>Created by</th>
+                                <th>Child Name</th>
+                                <th>Fixed Schedules</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for c in c_records %}
+
+                            <tr>
+                                <td scope="row">{{c.creator}}</td>
+                                <td>{{c.first_name}} {{c.last_name}}</td>
+                                <td> {{c.schedules.count}}</td>
+
+                            </tr>
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="col-lg-4 mb-4">
+
+            <!-- Project Card Example -->
+            <!-- <div>
+                <h6 class="m-0 font-weight-bold text-primary mt-5 p-2 ">Recent activites</h6>
+            </div>
+
+            <div class="container-fluid bg-white">
+                <div class="row py-3 mb-4  align-items-left">
+
+                    <div class="col-sm-8 col-8">
+                        Lorem ipsum dolor sit amet...
+
+                    </div>
+
+                    <div class="col-2"><a href="#" data-toggle='tooltip' title="<h5>delete</h5>" data-html="true" data-placement="bottom"><i class="fa fa-info-circle fa-lg ml- mb-3
+                        text-info"></i></a>
+
+                    </div>
+                </div>
+            </div> -->
+
+
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->{% endblock content %}

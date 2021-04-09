@@ -1,0 +1,111 @@
+{% load static %}
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'>
+</script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+<style>
+.marker-light-red {
+  background-image: url('{% static 'pictures/light_red_pin.png)'%}');
+  background-size: cover;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+
+.place-title {
+  font-size: 100%;
+  font-weight: bold;
+  font-family: 'Saira Condensed';
+  text-align: center;
+  padding: 3px 3px 8px 3px;
+}
+
+</style>
+
+
+<div id='map' style='width: 100%; height: 100%;'></div>
+<script>
+    mapboxgl.accessToken = 'add your mapbox token code';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/dark-v2',
+        center: [9.0820, 8.6753],
+        zoom: 5
+    });
+
+
+    // for primary health centres
+    var geojson_primary_centres = {
+    type: 'FeatureCollection',
+    features: [
+    {% for phc  in primary_centres  %}
+        {
+        type: 'Feature',
+        geometry: {
+            type: 'Point',
+            coordinates: [9.0820, 8.6753],
+        },
+        properties: {
+            title: "<div class='place-title'>{{ phc.name }}</div>",
+            description: "hello!"
+        }
+        },
+    {% endfor %}
+    ]
+    };
+
+ // add markers to map
+    geojson_primary_centres.features.forEach(function(marker) {
+    
+    // visited
+    new mapboxgl.Marker({
+        color: "#CB4335",
+        draggable: true
+    })
+    .setLngLat(marker.geometry.coordinates)
+    .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+    .setHTML(marker.properties.title + marker.properties.description))
+    .addTo(map);
+
+    })
+
+
+
+    // for federal health centres
+    var geojson_federal_centres = {
+    type: 'FeatureCollection',
+    features: [
+    {% for fc  in federal_centres  %}
+        {
+        type: 'Feature',
+        geometry: {
+            type: 'Point',
+            coordinates: [{{fc.latitude}}, {{fc.longitude}}],
+        },
+        properties: {
+            title: "<div class='place-title'>{{ fc.name }}</div>",
+            description: "hello!"
+        }
+        },
+    {% endfor %}
+    ]
+    };
+
+ // add markers to map
+    geojson_federal_centres.features.forEach(function(marker) {
+
+    // access
+    new mapboxgl.Marker({
+        color: "#21618C",
+        draggable: true
+    })
+    .setLngLat(marker.geometry.coordinates)
+    .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+    .setHTML(marker.properties.title + marker.properties.description))
+    .addTo(map);
+
+    })
+
+    
+</script>

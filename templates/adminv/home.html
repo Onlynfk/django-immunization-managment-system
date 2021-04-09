@@ -1,0 +1,73 @@
+{% load static %} {% load widget_tweaks %} {% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css'%}">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../static_in_env/vendor/fontawesome-free/css/all.min.css">
+    <title>Admin - TrackImmunize</title>
+    <style>
+        .col-example {
+            padding: 10px;
+            margin: 0 0.3em;
+            color: #0066CC;
+        }
+        
+        body {
+            background: linear-gradient(110deg, #1ABC9C 60%, #16A085 60%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container my-4">
+
+
+        <div class=" p-3 mb-4">
+
+            <div class="d-flex align-items-center justify-content-center " style="height: 450px">
+
+                <div class="dropdown">
+                    <a class="fw-bold text-dark btn btn-block btn-info col-example dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fas fa-users"></i> Add New Users</a>
+
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item " href="{% url 'hw_signup' %}">Health worker</a></li>
+                        <li><a class="dropdown-item" href="{% url 'pho_signup' %}">Public Health official</a></li>
+                    </ul>
+
+                </div>
+
+                <div>
+                    <a class="fw-bold text-dark btn  btn-block btn-info col-example" href="/admin/"> <i class="fas fa-home"></i> Go to Main Site</a>
+                    <a class="text-center btn btn-sm btn-secondary" href="{% url 'logout'%} "> Logout</a>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+
+    <script src="../../static_in_env/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../static_in_env/bootstrap/js/bootstrap.bundle.js"></script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+</body>
+
+</html>

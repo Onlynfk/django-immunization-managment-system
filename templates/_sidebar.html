@@ -1,0 +1,8 @@
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    {% if user.is_hw %}
+    {% include 'healthw/hwsidebar.html' %}
+    {% else %}
+    {% include 'phealth/phwsidebar.html' %}
+    {% endif %}
+</ul>
