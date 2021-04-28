@@ -24,7 +24,7 @@
 
 ```sh
 
-$ git clone https://github.com/Onlynfk/trackimmunize
+$ git clone https://github.com/Onlynfk/django-immunization-managment-sysatem.git
 
 $ pipenv shell
 
