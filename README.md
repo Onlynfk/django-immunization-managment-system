@@ -4,8 +4,8 @@
 ## Live App 🎉 https://trackimmunize.herokuapp.com/
 
 ## demo account details for admin 👇🏼
-- username : adminne
-- password : adminpass22
+- username : admin
+- password : adminpass101
 
 - you can create other users(health worker and public worker) with this 😊
 
