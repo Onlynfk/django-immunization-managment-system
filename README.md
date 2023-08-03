@@ -1,8 +1,6 @@
 
 ## An Immunization Tracking System for Pediatrics made with Django app
 
-## Live App 🎉 https://trackimmunize.herokuapp.com/
-
 ## demo account details for admin 👇🏼
 - username : admin
 - password : adminpass101
